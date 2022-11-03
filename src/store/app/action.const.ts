@@ -1,0 +1,1 @@
+export const UPDATE_TITLE: string = 'UPDATE_TITLE'
