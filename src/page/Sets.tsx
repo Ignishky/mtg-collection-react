@@ -9,7 +9,6 @@ import { SetDisplay } from '../component/setDisplay'
 export const Sets = () => {
 
   const dispatch: AppDispatch = useAppDispatch()
-  const [nbCards, setNbCards] = useState(0)
   const [sets, setSets] = useState<Set[]>([])
 
   useEffect(() => {
@@ -17,7 +16,6 @@ export const Sets = () => {
     if (sets.length === 0) {
       const fetchData = async (): Promise<void> => {
         const response = await apiClient.getAllSets()
-        setNbCards(response.data.nbCards)
         setSets(response.data.sets)
       }
 
@@ -27,7 +25,7 @@ export const Sets = () => {
 
   return (
     <div className="sets">
-      <h3>{nbCards}</h3>
+      <h3>{sets.length}</h3>
       {
         sets.map(set => {
           return (<SetDisplay key={set.code} set={set} />)

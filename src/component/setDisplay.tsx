@@ -7,7 +7,8 @@ interface SetProps {
 export const SetDisplay = ({ set }: SetProps) => {
   return (
     <div className="border bg-light">
-      {set.code}#{set.name}
+      <img height='50px' src={set.icon} alt={set.code} />
+      {set.name}
     </div>
   )
 }

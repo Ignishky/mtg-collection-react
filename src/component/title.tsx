@@ -7,10 +7,8 @@ export const Title = () => {
   const title = useAppSelector((state: RootState) => state.app.title)
 
   return (
-    <>
-      <div className="title">
-        <h1>{title}</h1>
-      </div>
-    </>
+    <div className="title">
+      <h1>{title}</h1>
+    </div>
   )
 }
