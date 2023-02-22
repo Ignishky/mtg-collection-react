@@ -1,4 +1,4 @@
-import Set from '../type/Set'
+import Set from '../model/Set'
 
 interface SetProps {
   set: Set
@@ -6,8 +6,8 @@ interface SetProps {
 
 export const SetDisplay = ({ set }: SetProps) => {
   return (
-    <div className="border bg-light">
-      <img height='50px' src={set.icon} alt={set.code} />
+    <div>
+      <img height='50px' src={set.icon} alt={set.code + '#'} />
       {set.name}
     </div>
   )

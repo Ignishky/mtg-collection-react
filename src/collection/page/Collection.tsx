@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { AppDispatch } from '../store/store'
-import { UPDATE_TITLE } from '../store/app/action.const'
-import { useAppDispatch } from '../store/hooks'
+import { AppDispatch } from '../../store/store'
+import { UPDATE_TITLE } from '../../store/app/action.const'
+import { useAppDispatch } from '../../store/hooks'
 
 export const Collection = () => {
 

@@ -1,27 +1,23 @@
-import React, { Component } from 'react'
-import Menu from '../component/menu'
-import { Title } from '../component/title'
+import React from 'react'
+import { Menu } from '../component/Menu'
+import { Title } from '../component/Title'
 import './App.css'
-import { Route, Routes } from "react-router-dom"
-import { Sets } from "./Sets"
-import { Collection } from "./Collection"
+import { Route, Routes } from 'react-router-dom'
+import { Catalogue } from '../catalogue/page/Catalogue'
+import { Collection } from '../collection/page/Collection'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="home">
-        <Menu />
-        <div className="body">
-          <Title />
-          <Routes>
-            <Route path="/" element={<Sets />} />
-            <Route path="/sets" element={<Sets />} />
-            <Route path="/collection" element={<Collection />} />
-          </Routes>
-        </div>
+export const App = () => {
+  return (
+    <div className="home">
+      <Menu />
+      <div className="body">
+        <Title />
+        <Routes>
+          <Route path="/" element={<Catalogue />} />
+          <Route path="/catalogue" element={<Catalogue />} />
+          <Route path="/collection" element={<Collection />} />
+        </Routes>
       </div>
-    )
-  }
+    </div>
+  )
 }
-
-export default App

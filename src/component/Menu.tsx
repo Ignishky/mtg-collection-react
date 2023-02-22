@@ -1,12 +1,12 @@
-import './menu.css'
-import { Link } from "react-router-dom"
+import './Menu.css'
+import { Link } from 'react-router-dom'
 
-function Menu() {
+export const Menu = () => {
   return (
     <div className="menu">
       <nav>
         <div>
-          <Link to="/sets">Catalogue</Link>
+          <Link to="/catalogue">Catalogue</Link>
         </div>
         <div>
           <Link to="/collection">Collection</Link>
@@ -15,5 +15,3 @@ function Menu() {
     </div>
   )
 }
-
-export default Menu
