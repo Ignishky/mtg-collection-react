@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { AppDispatch } from '../../store/store'
 import { UPDATE_TITLE } from '../../store/app/action.const'
 import { useAppDispatch } from '../../store/hooks'
+import { Typography } from '@mui/joy'
 
 export const Collection = () => {
 
@@ -12,10 +13,8 @@ export const Collection = () => {
   })
 
   return (
-    <>
-      <div className="collection">
-        <h3>Collection</h3>
-      </div>
-    </>
+    <Typography level="h3">
+      Collection
+    </Typography>
   )
 }

@@ -1,17 +1,18 @@
-import './Menu.css'
 import { Link } from 'react-router-dom'
+import { List, ListItem, Stack } from '@mui/joy'
+import React from 'react'
 
 export const Menu = () => {
   return (
-    <div className="menu">
-      <nav>
-        <div>
+    <Stack justifyContent="center" alignItems="center" sx={{ background: "green" }}>
+      <List>
+        <ListItem>
           <Link to="/catalogue">Catalogue</Link>
-        </div>
-        <div>
+        </ListItem>
+        <ListItem>
           <Link to="/collection">Collection</Link>
-        </div>
-      </nav>
-    </div>
+        </ListItem>
+      </List>
+    </Stack>
   )
 }

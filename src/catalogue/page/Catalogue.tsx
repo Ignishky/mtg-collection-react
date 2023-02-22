@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { UPDATE_TITLE } from '../../store/app/action.const'
 import { AppDispatch } from '../../store/store'
 import { useAppDispatch } from '../../store/hooks'
 import backend from '../port/CatalogueBackend'
 import Set from '../model/Set'
 import { SetDisplay } from '../component/SetDisplay'
+import { Grid } from '@mui/joy'
 
 export const Catalogue = () => {
 
@@ -24,13 +25,16 @@ export const Catalogue = () => {
   })
 
   return (
-    <div>
-      <h3>{sets.length}</h3>
+    <Grid container margin={1} spacing={2} sx={{ flexGrow: 1 }}>
       {
         sets.map(set => {
-          return (<SetDisplay key={set.code} set={set} />)
+          return (
+            <Grid key={set.code} xs={2}>
+              <SetDisplay key={set.code} set={set} />
+            </Grid>
+          )
         })
       }
-    </div>
+    </Grid>
   )
 }
