@@ -15,7 +15,7 @@ export const Catalogue = () => {
   useEffect(() => {
     dispatch({ type: UPDATE_TITLE, data: { title: 'Sets' } })
     if (sets.length === 0) {
-      const fetchData = async (): Promise<void> => {
+      const fetchData = async () => {
         const response = await backend.getSets()
         setSets(response.data.sets)
       }
