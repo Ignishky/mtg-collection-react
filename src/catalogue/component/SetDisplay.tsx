@@ -1,5 +1,5 @@
 import Set from '../model/Set'
-import { useNavigate } from 'react-router-dom'
+import { NavigateFunction, useNavigate } from 'react-router-dom'
 import { AspectRatio, Card, CardContent, CardOverflow, Divider, Typography } from '@mui/joy'
 import { UPDATE_TITLE } from '../../store/app/action.const'
 import { AppDispatch } from '../../store/store'
@@ -12,23 +12,25 @@ interface SetDisplayProps {
 export const SetDisplay = ({ set }: SetDisplayProps) => {
 
   const dispatch: AppDispatch = useAppDispatch()
-  let navigate = useNavigate()
+  const navigate: NavigateFunction = useNavigate()
 
-  const routeChange = (set: Set) => {
-    dispatch({ type: UPDATE_TITLE, data: { title: set.name } })
-    navigate(`/set/${set.code}`)
+  function openSetDetail() {
+    return () => {
+      dispatch({ type: UPDATE_TITLE, data: { title: set.name } })
+      navigate(`/set/${set.code}`)
+    }
   }
 
   return (
-    <Card orientation="horizontal" variant="outlined" sx={{ width: 260 }} onClick={() => routeChange(set)}>
+    <Card orientation="horizontal" variant="outlined" sx={{ width: 260, height: 100 }} onClick={openSetDetail()}>
       <CardOverflow variant="soft">
-        <AspectRatio objectFit="contain" sx={{ width: 120 }}>
+        <AspectRatio objectFit="contain" sx={{ width: 90, paddingTop: 4 }}>
           <img src={set.icon} loading="lazy" alt={set.code} />
         </AspectRatio>
       </CardOverflow>
       <Divider />
-      <CardContent sx={{ px: 1 }}>
-        <Typography fontWeight="md" textColor="success.plainColor" mb={0.5}>
+      <CardContent sx={{ px: 1, verticalAlign: 'middle' }}>
+        <Typography fontWeight="bold" mb={0.5}>
           {set.name}
         </Typography>
       </CardContent>
