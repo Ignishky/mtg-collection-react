@@ -1,4 +1,4 @@
-import { Card, CardOverflow } from '@mui/joy'
+import { Card, CardContent, CardCover, Chip } from '@mui/joy'
 import React from 'react'
 import Kard from '../model/Kard'
 
@@ -9,9 +9,14 @@ interface KardDisplayProps {
 export const KardDisplay = ({ kard }: KardDisplayProps) => {
   return (
     <Card sx={{ height: 250 }}>
-      <CardOverflow>
+      <CardCover>
         <img src={kard.image} loading="lazy" alt={kard.name} height={260} />
-      </CardOverflow>
+      </CardCover>
+      <CardContent sx={{ justifyContent: 'flex-end', textAlign: 'center' }}>
+        <Chip size='sm' variant='soft' color='warning'>
+          {kard.prices.eur / 100} € / {kard.prices.eurFoil / 100} €
+        </Chip>
+      </CardContent>
     </Card>
   )
 }
