@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { UPDATE_TITLE } from '../../store/app/action.const'
-import { AppDispatch } from '../../store/store'
-import { useAppDispatch } from '../../store/hooks'
+import React, {useEffect, useState} from 'react'
+import {Grid} from '@mui/joy'
+import {UPDATE_TITLE} from '../../store/app/action.const'
+import {AppDispatch} from '../../store/store'
+import {useAppDispatch} from '../../store/hooks'
 import backend from '../port/CatalogueBackend'
 import Set from '../model/Set'
-import { SetDisplay } from '../component/SetDisplay'
-import { Grid } from '@mui/joy'
+import SetDisplay from '../component/SetDisplay'
 
-export const Catalogue = () => {
+const Catalogue = () => {
 
   const dispatch: AppDispatch = useAppDispatch()
   const [sets, setSets] = useState<Set[]>([])
@@ -38,3 +38,5 @@ export const Catalogue = () => {
     </Grid>
   )
 }
+
+export default Catalogue

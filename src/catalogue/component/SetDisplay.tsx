@@ -1,15 +1,15 @@
 import Set from '../model/Set'
-import { NavigateFunction, useNavigate } from 'react-router-dom'
-import { AspectRatio, Card, CardContent, CardOverflow, Divider, Typography } from '@mui/joy'
-import { UPDATE_TITLE } from '../../store/app/action.const'
-import { AppDispatch } from '../../store/store'
-import { useAppDispatch } from '../../store/hooks'
+import {NavigateFunction, useNavigate} from 'react-router-dom'
+import {AspectRatio, Card, CardContent, CardOverflow, Divider, Typography} from '@mui/joy'
+import {UPDATE_TITLE} from '../../store/app/action.const'
+import {AppDispatch} from '../../store/store'
+import {useAppDispatch} from '../../store/hooks'
 
 interface SetDisplayProps {
   set: Set
 }
 
-export const SetDisplay = ({ set }: SetDisplayProps) => {
+const SetDisplay = ({ set }: SetDisplayProps) => {
 
   const dispatch: AppDispatch = useAppDispatch()
   const navigate: NavigateFunction = useNavigate()
@@ -37,3 +37,5 @@ export const SetDisplay = ({ set }: SetDisplayProps) => {
     </Card>
   )
 }
+
+export default SetDisplay

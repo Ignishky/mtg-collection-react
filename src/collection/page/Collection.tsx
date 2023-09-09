@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
-import { AppDispatch } from '../../store/store'
-import { UPDATE_TITLE } from '../../store/app/action.const'
-import { useAppDispatch } from '../../store/hooks'
-import { Typography } from '@mui/joy'
+import {useEffect} from 'react'
+import {Typography} from '@mui/joy'
+import {AppDispatch} from '../../store/store'
+import {UPDATE_TITLE} from '../../store/app/action.const'
+import {useAppDispatch} from '../../store/hooks'
 
-export const Collection = () => {
+const Collection = () => {
 
   const dispatch: AppDispatch = useAppDispatch()
 
@@ -18,3 +18,5 @@ export const Collection = () => {
     </Typography>
   )
 }
+
+export default Collection

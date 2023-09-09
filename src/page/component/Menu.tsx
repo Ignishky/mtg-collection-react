@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
-import { List, ListItem, Stack } from '@mui/joy'
+import {Link} from 'react-router-dom'
+import {List, ListItem, Stack} from '@mui/joy'
 import React from 'react'
 
-export const Menu = () => {
+const Menu = () => {
   return (
     <Stack justifyContent="center" alignItems="center" sx={{ background: "green" }}>
       <List>
@@ -16,3 +16,5 @@ export const Menu = () => {
     </Stack>
   )
 }
+
+export default Menu

@@ -1,11 +1,11 @@
-import { Grid } from '@mui/joy'
-import { useParams } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
+import {Grid} from '@mui/joy'
+import {useParams} from 'react-router-dom'
 import Kard from '../model/Kard'
 import backend from '../port/SetBackend'
-import { KardDisplay } from '../component/KardDisplay'
+import KardDisplay from '../component/KardDisplay'
 
-export const SetDetail = () => {
+const SetDetail = () => {
   const { setCode } = useParams()
   const [cards, setCards] = useState<Kard[]>([])
 
@@ -34,3 +34,5 @@ export const SetDetail = () => {
     </Grid>
   )
 }
+
+export default SetDetail

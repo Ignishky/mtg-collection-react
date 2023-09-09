@@ -1,12 +1,12 @@
-import { Card, CardContent, CardCover, Chip } from '@mui/joy'
 import React from 'react'
+import {Card, CardContent, CardCover, Chip} from '@mui/joy'
 import Kard from '../model/Kard'
 
 interface KardDisplayProps {
   kard: Kard
 }
 
-export const KardDisplay = ({ kard }: KardDisplayProps) => {
+const KardDisplay = ({ kard }: KardDisplayProps) => {
   return (
     <Card sx={{ height: 250 }}>
       <CardCover>
@@ -20,3 +20,5 @@ export const KardDisplay = ({ kard }: KardDisplayProps) => {
     </Card>
   )
 }
+
+export default KardDisplay

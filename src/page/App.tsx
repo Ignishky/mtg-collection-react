@@ -1,14 +1,14 @@
 import React from 'react'
-import { Menu } from '../component/Menu'
-import { Title } from '../component/Title'
+import {Route, Routes} from 'react-router-dom'
+import {CssVarsProvider, Sheet} from '@mui/joy'
+import Menu from './component/Menu'
+import Title from './component/Title'
 import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import { Catalogue } from '../catalogue/page/Catalogue'
-import { Collection } from '../collection/page/Collection'
-import { CssVarsProvider, Sheet } from '@mui/joy'
-import { SetDetail } from '../setDetail/page/SetDetail'
+import Catalogue from '../catalogue/page/Catalogue'
+import Collection from '../collection/page/Collection'
+import SetDetail from '../setDetail/page/SetDetail'
 
-export const App = () => {
+const App = () => {
   return (
     <CssVarsProvider>
       <Sheet variant="outlined" className="home">
@@ -26,3 +26,5 @@ export const App = () => {
     </CssVarsProvider>
   )
 }
+
+export default App
