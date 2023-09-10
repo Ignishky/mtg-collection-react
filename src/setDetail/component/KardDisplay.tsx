@@ -12,7 +12,7 @@ const KardDisplay = ({ kard }: KardDisplayProps) => {
       <CardCover>
         <img src={kard.image} loading="lazy" alt={kard.name} height={260} />
       </CardCover>
-      <CardContent sx={{ justifyContent: 'flex-end', textAlign: 'center' }}>
+      <CardContent sx={{ justifyContent: 'flex-end', alignSelf:'center', textAlign: 'center', width: '65%' }}>
         <Chip size='sm' variant='soft' color='warning'>
           {kard.prices.eur / 100} € / {kard.prices.eurFoil / 100} €
         </Chip>
