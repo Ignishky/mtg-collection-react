@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Grid} from '@mui/joy'
+import {Grid, LinearProgress} from '@mui/joy'
 import {UPDATE_TITLE} from '../../store/app/action.const'
 import {AppDispatch} from '../../store/store'
 import {useAppDispatch} from '../../store/hooks'
@@ -11,6 +11,7 @@ const Catalogue = () => {
 
   const dispatch: AppDispatch = useAppDispatch()
   const [sets, setSets] = useState<Set[]>([])
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     dispatch({ type: UPDATE_TITLE, data: { title: 'Sets' } })
@@ -18,6 +19,7 @@ const Catalogue = () => {
       const fetchData = async () => {
         const response = await backend.getSets()
         setSets(response.data.sets)
+        setLoading(false)
       }
 
       fetchData()
@@ -25,17 +27,26 @@ const Catalogue = () => {
   })
 
   return (
-    <Grid container margin={1} spacing={2} sx={{ flexGrow: 1 }}>
+    <>
       {
-        sets.map(set => {
-          return (
-            <Grid key={set.code} xs={2}>
-              <SetDisplay key={set.code} set={set} />
-            </Grid>
-          )
-        })
+        loading && (<LinearProgress />)
       }
-    </Grid>
+      {
+        sets && (
+          <Grid container margin={1} spacing={2} sx={{ flexGrow: 1 }}>
+            {
+              sets.map(set => {
+                return (
+                  <Grid key={set.code} xs={2}>
+                    <SetDisplay key={set.code} set={set} />
+                  </Grid>
+                )
+              })
+            }
+          </Grid>
+        )
+      }
+    </>
   )
 }
 
