@@ -33,7 +33,7 @@ const SetDetail = () => {
             {
               cards.map(card => {
                 return (
-                  <Grid key={card.name} xs={1}>
+                  <Grid key={card.id} xs={1}>
                     <KardDisplay kard={card} />
                   </Grid>
                 )

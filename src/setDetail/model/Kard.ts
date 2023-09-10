@@ -4,6 +4,7 @@ interface Prices {
 }
 
 interface Kard {
+  id: string,
   name: string,
   image: string,
   prices: Prices
