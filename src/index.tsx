@@ -1,7 +1,7 @@
 import React from 'react'
 import {createRoot} from 'react-dom/client'
 import './index.css'
-import App from './page/App'
+import App from './homepage/App'
 import reportWebVitals from './reportWebVitals'
 import {BrowserRouter} from "react-router-dom"
 import '@fontsource/public-sans';
