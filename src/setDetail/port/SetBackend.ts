@@ -1,5 +1,5 @@
 import http from '../../http-common'
-import SetResponse from '../model/SetResponse'
+import {SetResponse} from '../model/SetResponse'
 
 class SetBackend {
   getSet(setCode: string): Promise<SetResponse> {

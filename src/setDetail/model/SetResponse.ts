@@ -1,7 +1,19 @@
-import SetData from './SetData'
-
-interface SetResponse {
+export interface SetResponse {
   data: SetData
 }
 
-export default SetResponse
+export interface SetData {
+  cards: Card[]
+}
+
+interface Prices {
+  eur: number,
+  eurFoil: number
+}
+
+export interface Card {
+  id: string,
+  name: string,
+  image: string,
+  prices: Prices
+}

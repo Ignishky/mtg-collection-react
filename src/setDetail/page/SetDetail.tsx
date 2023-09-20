@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {Grid, LinearProgress} from '@mui/joy'
 import {useParams} from 'react-router-dom'
-import Kard from '../model/Kard'
+import {Card} from '../model/SetResponse'
 import backend from '../port/SetBackend'
-import KardDisplay from '../component/KardDisplay'
+import CardDisplay from '../component/CardDisplay'
 
 const SetDetail = () => {
   const { setCode } = useParams()
-  const [cards, setCards] = useState<Kard[]>([])
+  const [cards, setCards] = useState<Card[]>([])
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const SetDetail = () => {
               cards.map(card => {
                 return (
                   <Grid key={card.id} xs={1}>
-                    <KardDisplay kard={card} />
+                    <CardDisplay card={card} />
                   </Grid>
                 )
               })
