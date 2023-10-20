@@ -15,5 +15,7 @@ export interface Card {
   id: string,
   name: string,
   image: string,
-  prices: Prices
+  prices: Prices,
+  foil: boolean,
+  nonFoil: boolean,
 }
