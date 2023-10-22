@@ -1,14 +1,16 @@
 export interface SetResponse {
-  data: SetData
+  data: SetData,
 }
 
 export interface SetData {
-  cards: Card[]
+  name: string,
+  cards: Card[],
+  prices: Prices,
 }
 
-interface Prices {
+export interface Prices {
   eur: number,
-  eurFoil: number
+  eurFoil: number,
 }
 
 export interface Card {

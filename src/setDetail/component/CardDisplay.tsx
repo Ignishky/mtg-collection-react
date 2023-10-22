@@ -1,17 +1,10 @@
 import React from 'react'
 import {Card as TcgCard, CardContent, CardCover, Chip} from '@mui/joy'
 import {Card} from '../model/SetResponse'
+import {displayCardPrices} from '../../common/PricesUtils';
 
 interface Props {
   card: Card
-}
-
-function getPrices(card: Card) {
-  let eur = `${(card.prices.eur / 100).toFixed(2)} €`
-  let eurFoil = `${(card.prices.eurFoil / 100).toFixed(2)} € 🌟`
-  if (!card.nonFoil) return eurFoil
-  if (!card.foil) return eur
-  return `${eur} / ${eurFoil}`
 }
 
 const CardDisplay = ({ card }: Props) => {
@@ -22,7 +15,7 @@ const CardDisplay = ({ card }: Props) => {
       </CardCover>
       <CardContent sx={{ justifyContent: 'flex-end', alignSelf: 'center', textAlign: 'center', width: '70%' }}>
         <Chip size="sm" variant="soft" color="neutral">
-          {getPrices(card)}
+          {displayCardPrices(card)}
         </Chip>
       </CardContent>
     </TcgCard>

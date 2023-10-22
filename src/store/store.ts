@@ -1,6 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit'
-import reducer from './app/reducer'
-import { AppState } from "./app/types"
+import {configureStore} from '@reduxjs/toolkit'
+import reducer, {AppState} from './app/reducer'
 
 export interface RootState {
   app: AppState

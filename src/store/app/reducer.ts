@@ -1,9 +1,16 @@
-import { AppState } from './types'
-import { UPDATE_TITLE } from './action.const'
+import {UPDATE_TITLE} from './action.const'
+import {Prices} from '../../setDetail/model/SetResponse';
+
+export interface AppState {
+  title: string
+  numberOfCards: number
+  prices: Prices
+}
 
 const initialState: AppState = {
   title: '',
-  numberOfCards: 0
+  numberOfCards: 0,
+  prices: { eur: 0, eurFoil: 0 },
 }
 
 const reducer = (state: AppState = initialState, action: any): AppState => {
@@ -12,7 +19,8 @@ const reducer = (state: AppState = initialState, action: any): AppState => {
     case UPDATE_TITLE:
       result = {
         title: action.data.title,
-        numberOfCards: state.numberOfCards
+        numberOfCards: action.data.numberOfCards,
+        prices: action.data.prices,
       }
       break
     default:
