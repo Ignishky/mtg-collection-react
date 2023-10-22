@@ -9,7 +9,7 @@ const Title = () => {
 
   return (
     <Stack justifyContent="center" alignItems="center" sx={{ background: "blue" }}>
-      <Typography level="display1">
+      <Typography level="h1">
         {appState.title}
       </Typography>
       {appState.numberOfCards && (
