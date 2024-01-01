@@ -14,7 +14,7 @@ const CardDisplay = ({ card }: Props) => {
         <img src={card.image} loading="lazy" alt={card.name} height={260} />
       </CardCover>
       <CardContent sx={{ justifyContent: 'flex-end', alignSelf: 'center', textAlign: 'center', width: '70%' }}>
-        <Chip size="sm" variant="soft" color="neutral">
+        <Chip size="sm" variant="soft" color="neutral" sx={{ alignSelf: 'center' }}>
           {displayCardPrices(card)}
         </Chip>
       </CardContent>
