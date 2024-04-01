@@ -20,4 +20,6 @@ export interface Card {
   prices: Prices,
   foil: boolean,
   nonFoil: boolean,
+  owned: boolean,
+  ownedFoil: boolean,
 }

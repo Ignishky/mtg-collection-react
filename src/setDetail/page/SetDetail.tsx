@@ -3,6 +3,7 @@ import {Grid, LinearProgress} from '@mui/joy'
 import {useParams} from 'react-router-dom'
 import {Card} from '../model/SetResponse'
 import backend from '../port/SetBackend'
+import collectionBackend from '../port/CollectionBackend'
 import CardDisplay from '../component/CardDisplay'
 import {UPDATE_TITLE} from '../../store/app/action.const';
 import {AppDispatch} from '../../store/store';
@@ -28,6 +29,22 @@ const SetDetail = () => {
     }
   })
 
+  function addCardToCollection(card: Card, ownedFoil: boolean) {
+    return async () => {
+      await collectionBackend.addCard(card.id, ownedFoil)
+      let response = await backend.getSet(setCode!!);
+      setCards(response.data.cards)
+    }
+  }
+
+  function removeCardFromCollection(card: Card) {
+    return async () => {
+      await collectionBackend.removeCard(card.id)
+      let response = await backend.getSet(setCode!!);
+      setCards(response.data.cards)
+    }
+  }
+
   return (
     <>
       {
@@ -40,7 +57,7 @@ const SetDetail = () => {
               cards.map(card => {
                 return (
                   <Grid key={card.id} xs={1}>
-                    <CardDisplay card={card} />
+                    <CardDisplay card={card} addToCollection={addCardToCollection} removeFromCollection={removeCardFromCollection} />
                   </Grid>
                 )
               })
