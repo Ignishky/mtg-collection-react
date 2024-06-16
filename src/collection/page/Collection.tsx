@@ -16,12 +16,12 @@ const Collection = () => {
 
   async function getData() {
     const response = await backend.getCards()
+    dispatch({ type: UPDATE_TITLE, data: { title: 'Collection', numberOfCards: response.data.cards.length, prices: response.data.prices } })
     setCards(response.data.cards)
     setLoading(false)
   }
 
   useEffect(() => {
-    dispatch({ type: UPDATE_TITLE, data: { title: 'Collection' } })
     getData();
   })
 
