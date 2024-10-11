@@ -1,6 +1,6 @@
 import Set from '../model/Set'
 import {NavigateFunction, useNavigate} from 'react-router-dom'
-import {AspectRatio, Card, CardContent, CardOverflow, Divider, Typography} from '@mui/joy'
+import {AspectRatio, Card, CardContent, CardOverflow, Typography} from '@mui/joy'
 import {UPDATE_TITLE} from '../../store/app/action.const'
 import {AppDispatch} from '../../store/store'
 import {useAppDispatch} from '../../store/hooks'
@@ -22,14 +22,13 @@ const SetDisplay = ({ set }: SetDisplayProps) => {
   }
 
   return (
-    <Card orientation="horizontal" variant="outlined" sx={{ width: 260, height: 100 }} onClick={openSetDetail()}>
+    <Card orientation="horizontal" variant="outlined" sx={{ width: 220, height: 100, cursor: 'pointer' }} onClick={openSetDetail()}>
       <CardOverflow variant="soft">
         <AspectRatio objectFit="contain" sx={{ width: 90, paddingTop: 4 }}>
           <img src={set.icon} loading="lazy" alt={set.code} />
         </AspectRatio>
       </CardOverflow>
-      <Divider />
-      <CardContent sx={{ px: 1, verticalAlign: 'middle' }}>
+      <CardContent sx={{ verticalAlign: 'middle' }}>
         <Typography fontWeight="bold" mb={0.5}>
           {set.name}
         </Typography>

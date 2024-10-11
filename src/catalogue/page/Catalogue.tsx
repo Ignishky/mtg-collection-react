@@ -33,7 +33,7 @@ const Catalogue = () => {
       }
       {
         sets && (
-          <Grid container margin={1} spacing={2} sx={{ flexGrow: 1 }}>
+          <Grid container margin={1} spacing={1}>
             {
               sets.map(set => {
                 return (
