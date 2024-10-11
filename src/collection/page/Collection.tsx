@@ -22,7 +22,9 @@ const Collection = () => {
   }
 
   useEffect(() => {
-    getData();
+    if (cards.length === 0) {
+      getData();
+    }
   })
 
   function removeCardFromCollection(card: Card) {
