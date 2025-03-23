@@ -10,12 +10,12 @@ import SetDisplay from '../component/SetDisplay'
 const Catalogue = () => {
 
   const dispatch: AppDispatch = useAppDispatch()
-  const [sets, setSets] = useState<Set[]>([])
+  const [sets, setSets] = useState<Set[]>()
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     dispatch({ type: UPDATE_TITLE, data: { title: 'Sets' } })
-    if (sets.length === 0) {
+    if (!sets) {
       const fetchData = async () => {
         const response = await backend.getSets()
         setSets(response.data.sets)
