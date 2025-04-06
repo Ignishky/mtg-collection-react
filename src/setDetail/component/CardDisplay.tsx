@@ -24,7 +24,7 @@ const CardDisplay = ({ card, addToCollection, removeFromCollection }: Props) => 
   }
 
   return (
-    <TcgCard sx={{ height: 220 }}>
+    <TcgCard sx={{ height: 250 }}>
       <CardCover>
         <img src={card.image} loading="lazy" alt={card.name} />
       </CardCover>
