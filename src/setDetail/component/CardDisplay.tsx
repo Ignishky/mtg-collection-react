@@ -18,7 +18,7 @@ const CardDisplay = ({ card, addToCollection, removeFromCollection }: Props) => 
   }
 
   function removeCollectionButton(ownedFoil: boolean) {
-    return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }} onClick={removeFromCollection(card)}>
+    return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }} onClick={removeFromCollection(card, ownedFoil)}>
       - {ownedFoil ? '🌟' : ''}
     </IconButton>;
   }
@@ -30,31 +30,16 @@ const CardDisplay = ({ card, addToCollection, removeFromCollection }: Props) => 
       </CardCover>
       <CardContent sx={{ justifyContent: 'flex-end', alignSelf: 'center', textAlign: 'center', width: '100%' }}>
         {
-          !card.owned && (
-            <>
-              {
-                card.nonFoil && addCollectionButton(false)
-              }
-              {
-                card.foil && addCollectionButton(true)
-              }
-            </>
-          )
+          card.nonFoil && addCollectionButton(false)
         }
         {
-          card.owned && (
-            <>
-              {
-                !card.ownedFoil && removeCollectionButton(false)
-              }
-              {
-                !card.ownedFoil && card.foil && addCollectionButton(true)
-              }
-              {
-                card.ownedFoil && removeCollectionButton(true)
-              }
-            </>
-          )
+          card.foil && addCollectionButton(true)
+        }
+        {
+          card.nbOwnedNonFoil > 0 && removeCollectionButton(false)
+        }
+        {
+          card.nbOwnedFoil > 0 && removeCollectionButton(true)
         }
         <Chip size="sm" variant="soft" color="neutral" sx={{ alignSelf: 'center' }}>
           {displayCardPrices(card)}

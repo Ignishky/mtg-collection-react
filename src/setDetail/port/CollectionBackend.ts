@@ -2,11 +2,11 @@ import http from '../../http-common'
 
 class CollectionBackend {
   addCard(cardId: string, ownedFoil: boolean): Promise<void> {
-    return http.put(`/collection/${cardId}`, `{"ownedFoil": ${ownedFoil}}`)
+    return http.post(`/collection/${cardId}/add`, `{"ownedFoil": ${ownedFoil}}`)
   }
 
-  removeCard(cardId: string): Promise<void> {
-    return http.delete(`/collection/${cardId}`)
+  removeCard(cardId: string, ownedFoil: boolean): Promise<void> {
+    return http.post(`/collection/${cardId}/remove`, `{"ownedFoil": ${ownedFoil}}`)
   }
 }
 

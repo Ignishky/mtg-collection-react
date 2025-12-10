@@ -37,9 +37,9 @@ const SetDetail = () => {
     }
   }
 
-  function removeCardFromCollection(card: Card) {
+  function removeCardFromCollection(card: Card, ownedFoil: boolean) {
     return async () => {
-      await collectionBackend.removeCard(card.id)
+      await collectionBackend.removeCard(card.id, ownedFoil)
       let response = await backend.getSet(setCode!!);
       setCards(response.data.cards)
     }
