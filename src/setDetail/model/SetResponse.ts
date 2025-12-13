@@ -1,8 +1,4 @@
 export interface SetResponse {
-  data: SetData,
-}
-
-export interface SetData {
   name: string,
   cards: Card[],
   prices: Prices,

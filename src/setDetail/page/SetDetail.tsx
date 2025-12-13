@@ -14,26 +14,41 @@ const SetDetail = () => {
 
   const { setCode } = useParams()
   const [cards, setCards] = useState<Card[]>([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (setCode && cards.length === 0) {
-      const fetchData = async () => {
+    if (!setCode) return
+
+    const fetchData = async () => {
+      try {
+        setLoading(true)
         const response = await backend.getSet(setCode)
-        setCards(response.data.cards)
-        dispatch({ type: UPDATE_TITLE, data: { title: response.data.name, numberOfCards: response.data.cards.length, prices: response.data.prices } })
+        setCards(response.cards)
+        dispatch({
+          type: UPDATE_TITLE,
+          data: {
+            title: response.name,
+            numberOfCards: response.cards.length,
+            prices: response.prices,
+          },
+        })
+      } catch (e: any) {
+        if (e.name !== 'CanceledError' && e.name !== 'AbortError') {
+          console.error('Failed to load set', e)
+        }
+      } finally {
         setLoading(false)
       }
-
-      fetchData()
     }
-  })
+
+    fetchData()
+  }, [setCode, dispatch])
 
   function addCardToCollection(card: Card, ownedFoil: boolean) {
     return async () => {
       await collectionBackend.addCard(card.id, ownedFoil)
       let response = await backend.getSet(setCode!!);
-      setCards(response.data.cards)
+      setCards(response.cards)
     }
   }
 
@@ -41,7 +56,7 @@ const SetDetail = () => {
     return async () => {
       await collectionBackend.removeCard(card.id, ownedFoil)
       let response = await backend.getSet(setCode!!);
-      setCards(response.data.cards)
+      setCards(response.cards)
     }
   }
 

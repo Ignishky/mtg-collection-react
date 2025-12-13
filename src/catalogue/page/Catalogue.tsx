@@ -4,7 +4,7 @@ import {UPDATE_TITLE} from '../../store/app/action.const'
 import {AppDispatch} from '../../store/store'
 import {useAppDispatch} from '../../store/hooks'
 import backend from '../port/CatalogueBackend'
-import Set from '../model/Set'
+import {Set} from '../model/SetsResponse'
 import SetDisplay from '../component/SetDisplay'
 
 const Catalogue = () => {
@@ -18,7 +18,7 @@ const Catalogue = () => {
     if (!sets) {
       const fetchData = async () => {
         const response = await backend.getSets()
-        setSets(response.data.sets)
+        setSets(response.sets)
         setLoading(false)
       }
 

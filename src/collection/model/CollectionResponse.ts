@@ -1,14 +1,10 @@
 import {Card} from '../../setDetail/model/SetResponse';
 
 export interface CollectionResponse {
-  data: CollectionData,
+  prices: Prices,
+  cards: Card[],
 }
 
 export interface Prices {
   eur: number,
-}
-
-export interface CollectionData {
-  prices: Prices,
-  cards: Card[],
 }

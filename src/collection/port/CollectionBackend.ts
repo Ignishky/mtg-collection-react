@@ -2,9 +2,12 @@ import http from '../../http-common'
 import {CollectionResponse} from '../model/CollectionResponse';
 
 class CollectionBackend {
-  getCards(): Promise<CollectionResponse> {
-    return http.get(`/collection`)
+
+  async getCards(): Promise<CollectionResponse> {
+    const { data } = await http.get(`/collection`)
+    return data
   }
+
 }
 
 export default new CollectionBackend()

@@ -12,26 +12,35 @@ const Collection = () => {
 
   const dispatch: AppDispatch = useAppDispatch()
   const [cards, setCards] = useState<Card[]>()
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (!cards) {
-      const fetchData= async () => {
+    const fetchData = async () => {
+      try {
+        setLoading(true)
         const response = await backend.getCards()
-        dispatch({ type: UPDATE_TITLE, data: { title: 'Collection', numberOfCards: response.data.cards.length, prices: response.data.prices } })
-        setCards(response.data.cards)
+        setCards(response.cards)
+        dispatch({
+          type: UPDATE_TITLE,
+          data: { title: 'Collection', numberOfCards: response.cards.length, prices: response.prices },
+        })
+      } catch (e: any) {
+        if (e.name !== 'CanceledError' && e.name !== 'AbortError') {
+          console.error('Failed to load set', e)
+        }
+      } finally {
         setLoading(false)
       }
-
-      fetchData();
     }
-  })
+
+    fetchData();
+  }, [dispatch])
 
   function removeCardFromCollection(card: Card, ownedFoil: boolean) {
     return async () => {
       await collectionBackend.removeCard(card.id, ownedFoil)
       const response = await backend.getCards()
-      setCards(response.data.cards)
+      setCards(response.cards)
     }
   }
 

@@ -1,7 +1,9 @@
-import SetsData from './SetsData'
-
-interface SetsResponse {
-  data: SetsData
+export interface SetsResponse {
+  sets: Set[]
 }
 
-export default SetsResponse
+export interface Set {
+  code: string,
+  name: string,
+  icon: string
+}
