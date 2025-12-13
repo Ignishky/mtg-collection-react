@@ -1,12 +1,7 @@
 export interface SetResponse {
   name: string,
   cards: Card[],
-  prices: Prices,
-}
-
-export interface Prices {
-  eur: number,
-  eurFoil: number,
+  price: number
 }
 
 export interface Card {
@@ -18,4 +13,9 @@ export interface Card {
   nonFoil: boolean,
   nbOwnedNonFoil: number,
   nbOwnedFoil: number,
+}
+
+export interface Prices {
+  eur: number,
+  eurFoil: number,
 }

@@ -1,7 +1,14 @@
 import React from 'react'
 import {Card as TcgCard, CardContent, CardCover, Chip, IconButton} from '@mui/joy'
 import {Card} from '../model/SetResponse'
-import {displayCardPrices} from '../../common/PricesUtils';
+
+export function displayCardPrices(card: Card) {
+  let nbNonFoil = card.nbOwnedNonFoil >0 ? `(${card.nbOwnedNonFoil})` : ``
+  let eurNonFoil = `${(card.prices.eur / 100).toFixed(2)} € ${nbNonFoil}`
+  let nbFoil = card.nbOwnedFoil >0 ? `(${card.nbOwnedFoil})` : ``
+  let eurFoil = `${(card.prices.eurFoil / 100).toFixed(2)} € ${nbFoil} 🌟`
+  return card.nonFoil ? card.foil ? `${eurNonFoil} / ${eurFoil}` : eurNonFoil : eurFoil
+}
 
 interface Props {
   card: Card,

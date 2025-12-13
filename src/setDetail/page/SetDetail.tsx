@@ -29,7 +29,7 @@ const SetDetail = () => {
           data: {
             title: response.name,
             numberOfCards: response.cards.length,
-            prices: response.prices,
+            price: response.price,
           },
         })
       } catch (e: any) {

@@ -22,7 +22,7 @@ const Collection = () => {
         setCards(response.cards)
         dispatch({
           type: UPDATE_TITLE,
-          data: { title: 'Collection', numberOfCards: response.cards.length, prices: response.prices },
+          data: { title: 'Collection', numberOfCards: response.size, price: response.value },
         })
       } catch (e: any) {
         if (e.name !== 'CanceledError' && e.name !== 'AbortError') {

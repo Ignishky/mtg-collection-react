@@ -4,13 +4,13 @@ import {Prices} from '../../setDetail/model/SetResponse';
 export interface AppState {
   title: string
   numberOfCards: number
-  prices: Prices
+  price: number
 }
 
 const initialState: AppState = {
   title: '',
   numberOfCards: 0,
-  prices: { eur: 0, eurFoil: 0 },
+  price: 0,
 }
 
 const reducer = (state: AppState = initialState, action: any): AppState => {
@@ -20,7 +20,7 @@ const reducer = (state: AppState = initialState, action: any): AppState => {
       result = {
         title: action.data.title,
         numberOfCards: action.data.numberOfCards,
-        prices: action.data.prices,
+        price: action.data.price,
       }
       break
     default:
