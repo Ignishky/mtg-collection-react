@@ -5,9 +5,11 @@ import {Card} from '../model/SetResponse'
 import backend from '../port/SetBackend'
 import collectionBackend from '../port/CollectionBackend'
 import CardDisplay from '../component/CardDisplay'
-import {UPDATE_TITLE} from '../../store/app/action.const';
-import {AppDispatch} from '../../store/store';
-import {useAppDispatch} from '../../store/hooks';
+import {UPDATE_TITLE} from '../../store/app/action.const'
+import {AppDispatch} from '../../store/store'
+import {useAppDispatch} from '../../store/hooks'
+import {useSortedCards} from '../../common/hook/useSortedCards'
+import SortSelector from '../../common/component/SortSelector'
 
 const SetDetail = () => {
   const dispatch: AppDispatch = useAppDispatch()
@@ -15,6 +17,7 @@ const SetDetail = () => {
   const { setCode } = useParams()
   const [cards, setCards] = useState<Card[]>([])
   const [loading, setLoading] = useState(false)
+  const { sortedCards, sortBy, setSortBy } = useSortedCards(cards)
 
   useEffect(() => {
     if (!setCode) return
@@ -68,8 +71,11 @@ const SetDetail = () => {
       {
         cards && (
           <Grid container margin={1} columns={9}>
+            <Grid xs={9} sx={{ mb: 1, display: 'flex', justifyContent: 'flex-end' }}>
+              <SortSelector sortBy={sortBy} setSortBy={setSortBy} />
+            </Grid>
             {
-              cards.map(card => {
+              sortedCards.map(card => {
                 return (
                   <Grid key={card.id} xs={1}>
                     <CardDisplay card={card} addToCollection={addCardToCollection} removeFromCollection={removeCardFromCollection} />

@@ -9,6 +9,7 @@ export interface Card {
   name: string,
   image: string,
   prices: Prices,
+  colors: string[],
   foil: boolean,
   nonFoil: boolean,
   nbOwnedNonFoil: number,
