@@ -11,6 +11,8 @@ out/
 /node_modules
 /.pnp
 .pnp.js
+.yarn
+.pnp.*
 
 # testing
 /coverage
