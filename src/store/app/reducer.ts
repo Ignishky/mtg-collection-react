@@ -1,5 +1,4 @@
 import {UPDATE_TITLE} from './action.const'
-import {Prices} from '../../setDetail/model/SetResponse';
 
 export interface AppState {
   title: string
