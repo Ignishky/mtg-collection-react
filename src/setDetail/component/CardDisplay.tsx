@@ -1,11 +1,11 @@
 import React from 'react'
-import { Card as TcgCard, CardContent, CardCover, Chip, IconButton } from '@mui/joy'
+import { Card as TcgCard, CardContent, CardCover, CardOverflow, Chip, IconButton } from '@mui/joy'
 import { Card } from '../model/SetResponse'
 
 export function displayCardPrices(card: Card) {
-  let nbNonFoil = card.nbOwnedNonFoil >0 ? `(${card.nbOwnedNonFoil})` : ``
+  let nbNonFoil = card.nbOwnedNonFoil > 0 ? `(${card.nbOwnedNonFoil})` : ``
   let eurNonFoil = `${(card.prices.eur / 100).toFixed(2)} € ${nbNonFoil}`
-  let nbFoil = card.nbOwnedFoil >0 ? `(${card.nbOwnedFoil})` : ``
+  let nbFoil = card.nbOwnedFoil > 0 ? `(${card.nbOwnedFoil})` : ``
   let eurFoil = `${(card.prices.eurFoil / 100).toFixed(2)} € ${nbFoil} 🌟`
   return card.nonFoil ? card.foil ? `${eurNonFoil} / ${eurFoil}` : eurNonFoil : eurFoil
 }
@@ -25,13 +25,14 @@ const CardDisplay = ({ card, addToCollection, removeFromCollection }: Props) => 
   }
 
   function removeCollectionButton(ownedFoil: boolean) {
-    return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }} onClick={removeFromCollection(card, ownedFoil)}>
+    return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }}
+                       onClick={removeFromCollection(card, ownedFoil)}>
       - {ownedFoil ? '🌟' : ''}
     </IconButton>;
   }
 
   return (
-    <TcgCard sx={{ height: 250 }}>
+    <TcgCard sx={{ height: 250, display: 'flex', flexDirection: 'column' }}>
       <CardCover>
         <img src={card.image} loading="lazy" alt={card.name} />
       </CardCover>
@@ -52,6 +53,20 @@ const CardDisplay = ({ card, addToCollection, removeFromCollection }: Props) => 
           {displayCardPrices(card)}
         </Chip>
       </CardContent>
+      {(card.nbOwnedNonFoil > 0 || card.nbOwnedFoil > 0) && (
+        <CardOverflow
+          variant="solid"
+          color={card.nbOwnedFoil > 0 ? "success" : "warning"}
+          sx={{
+            textAlign: 'center',
+            fontSize: 'xs',
+            fontWeight: 'xl',
+            textTransform: 'uppercase',
+          }}
+        >
+          {card.nbOwnedFoil > 0 ? "Owned foil" : "Owned"}
+        </CardOverflow>
+      )}
     </TcgCard>
   )
 }
