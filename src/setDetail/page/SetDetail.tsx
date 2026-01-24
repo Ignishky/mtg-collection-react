@@ -72,7 +72,7 @@ const SetDetail = () => {
         cards && (
           <Grid container margin={1} columns={9}>
             <Grid xs={9} sx={{ mb: 1, display: 'flex', justifyContent: 'flex-end' }}>
-              <SortSelector sortBy={sortBy} setSortBy={setSortBy} />
+              <SortSelector sortBy={sortBy || 'number'} setSortBy={setSortBy} />
             </Grid>
             {
               sortedCards.map(card => {

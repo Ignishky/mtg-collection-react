@@ -1,13 +1,17 @@
 import { useMemo, useState } from 'react'
 import { Card } from '../../setDetail/model/SetResponse'
 
-export type SortType = 'name' | 'price' | 'priceDesc' | 'color'
+export type SortType = 'number' | 'name' | 'price' | 'priceDesc' | 'color'
 
 export const useSortedCards = (cards: Card[] | undefined) => {
-  const [sortBy, setSortBy] = useState<SortType>('priceDesc')
+  const [sortBy, setSortBy] = useState<SortType>()
 
   const sortedCards = useMemo(() => {
     if (!cards) return []
+
+    const getCollectionNumber = (c: Card) => {
+      return parseInt(c.collectionNumber, 10)
+    }
 
     const getPriceForSort = (c: Card) => {
       const prices = [c.prices.eur, c.prices.eurFoil].filter(p => p > 0)
@@ -32,6 +36,8 @@ export const useSortedCards = (cards: Card[] | undefined) => {
     const arr = [...cards]
     arr.sort((a, b) => {
       switch (sortBy) {
+        case "number":
+          return getCollectionNumber(a) - getCollectionNumber(b)
         case 'name':
           return a.name.localeCompare(b.name)
         case 'price':

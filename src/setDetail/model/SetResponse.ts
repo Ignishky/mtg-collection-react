@@ -6,6 +6,7 @@ export interface SetResponse {
 
 export interface Card {
   id: string,
+  collectionNumber: string,
   name: string,
   image: string,
   prices: Prices,

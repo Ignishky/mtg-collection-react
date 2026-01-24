@@ -10,6 +10,7 @@ interface SortSelectorProps {
 const SortSelector = ({ sortBy, setSortBy }: SortSelectorProps) => {
   return (
     <Select value={sortBy} onChange={(event, value) => value && setSortBy(value as SortType)} size="sm">
+      <Option value="number">Sort by Collection Number</Option>
       <Option value="name">Sort by Name (A→Z)</Option>
       <Option value="price">Sort by Price (low→high)</Option>
       <Option value="priceDesc">Sort by Price (high→low)</Option>
