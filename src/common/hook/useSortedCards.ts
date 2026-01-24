@@ -11,7 +11,7 @@ export const useSortedCards = (cards: Card[] | undefined) => {
 
     const getPriceForSort = (c: Card) => {
       const prices = [c.prices.eur, c.prices.eurFoil].filter(p => p > 0)
-      return prices.length > 0 ? Math.min(...prices) : Number.MAX_SAFE_INTEGER
+      return prices.length > 0 ? Math.max(...prices) : Number.MIN_SAFE_INTEGER
     }
 
     const colorOrder: Record<string, number> = {
