@@ -1,6 +1,6 @@
 import React from 'react'
-import {Route, Routes} from 'react-router-dom'
-import {CssVarsProvider, Sheet} from '@mui/joy'
+import { Route, Routes } from 'react-router-dom'
+import { CssVarsProvider, Sheet } from '@mui/joy'
 import Menu from './component/Menu'
 import Title from './component/Title'
 import './App.css'

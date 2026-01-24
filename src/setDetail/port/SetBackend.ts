@@ -1,6 +1,6 @@
 import http from '../../http-common'
-import {SetResponse} from '../model/SetResponse'
-import {AxiosRequestConfig} from 'axios';
+import { SetResponse } from '../model/SetResponse'
+import { AxiosRequestConfig } from 'axios';
 
 class SetBackend {
 

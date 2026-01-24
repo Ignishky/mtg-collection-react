@@ -1,6 +1,6 @@
 import React from 'react'
-import {Option, Select} from '@mui/joy'
-import {SortType} from '../../common/hook/useSortedCards'
+import { Option, Select } from '@mui/joy'
+import { SortType } from '../hook/useSortedCards'
 
 interface SortSelectorProps {
   sortBy: SortType

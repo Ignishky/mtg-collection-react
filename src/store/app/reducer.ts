@@ -1,4 +1,4 @@
-import {UPDATE_TITLE} from './action.const'
+import { UPDATE_TITLE } from './action.const'
 
 export interface AppState {
   title: string

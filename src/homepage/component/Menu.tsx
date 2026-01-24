@@ -1,5 +1,5 @@
-import {Link} from 'react-router-dom'
-import {List, ListItem, Stack} from '@mui/joy'
+import { Link } from 'react-router-dom'
+import { List, ListItem, Stack } from '@mui/joy'
 import React from 'react'
 
 const Menu = () => {

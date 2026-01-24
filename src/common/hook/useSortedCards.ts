@@ -1,5 +1,5 @@
-import {useMemo, useState} from 'react'
-import {Card} from '../../setDetail/model/SetResponse'
+import { useMemo, useState } from 'react'
+import { Card } from '../../setDetail/model/SetResponse'
 
 export type SortType = 'name' | 'price' | 'priceDesc' | 'color'
 
@@ -10,7 +10,7 @@ export const useSortedCards = (cards: Card[] | undefined) => {
     if (!cards) return []
 
     const getPriceForSort = (c: Card) => {
-      const prices = [c.prices.eur, c.prices.eurFoil].filter(p => typeof p === 'number' && p > 0)
+      const prices = [c.prices.eur, c.prices.eurFoil].filter(p => p > 0)
       return prices.length > 0 ? Math.min(...prices) : Number.MAX_SAFE_INTEGER
     }
 

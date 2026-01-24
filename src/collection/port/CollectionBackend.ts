@@ -1,5 +1,5 @@
 import http from '../../http-common'
-import {CollectionResponse} from '../model/CollectionResponse';
+import { CollectionResponse } from '../model/CollectionResponse';
 
 class CollectionBackend {
 
