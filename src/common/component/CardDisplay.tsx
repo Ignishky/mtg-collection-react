@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card as TcgCard, CardContent, CardCover, CardOverflow, Chip, IconButton } from '@mui/joy'
-import { Card } from '../../common/model/SetResponse'
-import { useAddToCollectionMutation, useRemoveFromCollectionMutation } from '../../common/port/backend';
+import { Card } from '../model/SetResponse'
+import { useAddToCollectionMutation, useRemoveFromCollectionMutation } from '../port/backend';
 
 export function displayCardPrices(card: Card) {
   let nbNonFoil = card.nbOwnedNonFoil > 0 ? `(${card.nbOwnedNonFoil})` : ``

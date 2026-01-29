@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, LinearProgress } from '@mui/joy'
 import { useParams } from 'react-router-dom'
-import CardDisplay from '../component/CardDisplay'
+import CardDisplay from '../../common/component/CardDisplay'
 import { UPDATE_TITLE } from '../../store/app/action.const'
 import { AppDispatch } from '../../store/store'
 import { useAppDispatch } from '../../store/hooks'

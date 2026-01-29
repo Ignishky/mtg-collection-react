@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, LinearProgress, Typography } from '@mui/joy'
 import { UPDATE_TITLE } from '../../store/app/action.const'
 import { useAppDispatch } from '../../store/hooks'
-import CardDisplay from '../../setDetail/component/CardDisplay'
+import CardDisplay from '../../common/component/CardDisplay'
 import { useSortedCards } from '../../common/hook/useSortedCards'
 import SortSelector from '../../common/component/SortSelector'
 import { useGetCollectionQuery } from '../../common/port/backend';
