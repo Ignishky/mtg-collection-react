@@ -14,7 +14,7 @@ const Collection = () => {
 
   dispatch({
     type: UPDATE_TITLE,
-    data: { title: 'Collection', numberOfCards: data?.size, price: data?.value },
+    data: { title: 'Collection', numberOfCards: data?.size, numberOfUniqueCards: data?.cards.length, price: data?.value },
   })
 
   const { sortedCards, sortBy, setSortBy } = useSortedCards(data?.cards)

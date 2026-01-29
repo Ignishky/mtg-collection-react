@@ -13,7 +13,7 @@ const Title = () => {
       </Typography>
       {appState.numberOfCards && (
         <Typography level="h3">
-          {appState.numberOfCards} cards # {`${(appState.price / 100).toFixed(2)} €`}
+          {appState.numberOfCards} cards ({appState.numberOfUniqueCards}) # {`${(appState.price / 100).toFixed(2)} €`}
         </Typography>
       )}
     </Stack>

@@ -21,6 +21,7 @@ const SetDetail = () => {
     data: {
       title: data?.name,
       numberOfCards: data?.cards.length,
+      numberOfUniqueCards: data?.cards.filter((card) => card.nbOwnedFoil + card.nbOwnedNonFoil > 0).length,
       price: data?.price,
     },
   })
