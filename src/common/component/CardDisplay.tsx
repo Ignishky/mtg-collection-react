@@ -59,7 +59,7 @@ const CardDisplay = ({ card }: Props) => {
       {(card.nbOwnedNonFoil > 0 || card.nbOwnedFoil > 0) && (
         <CardOverflow
           variant="solid"
-          color={card.nbOwnedFoil > 0 ? "success" : "warning"}
+          color={card.nbOwnedFoil > 0 || !card.foil ? "success" : "warning"}
           sx={{
             textAlign: 'center',
             fontSize: 'xs',
