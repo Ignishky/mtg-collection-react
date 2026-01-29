@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, LinearProgress } from '@mui/joy'
 import { useParams } from 'react-router-dom'
-import { Card } from '../model/SetResponse'
+import { Card } from '../../common/model/SetResponse'
 import backend from '../port/SetBackend'
 import collectionBackend from '../port/CollectionBackend'
 import CardDisplay from '../component/CardDisplay'

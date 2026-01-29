@@ -1,5 +1,5 @@
 import http from '../../http-common'
-import { SetsResponse } from '../model/SetsResponse'
+import { SetsResponse } from '../../common/model/SetsResponse'
 import { AxiosRequestConfig } from 'axios';
 
 class CatalogueBackend {

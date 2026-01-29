@@ -4,7 +4,7 @@ import { UPDATE_TITLE } from '../../store/app/action.const'
 import { AppDispatch } from '../../store/store'
 import { useAppDispatch } from '../../store/hooks'
 import backend from '../port/CatalogueBackend'
-import { Set } from '../model/SetsResponse'
+import { Set } from '../../common/model/SetsResponse'
 import SetDisplay from '../component/SetDisplay'
 
 const Catalogue = () => {

@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Card } from '../../setDetail/model/SetResponse'
+import { Card } from '../model/SetResponse'
 
 export type SortType = 'number' | 'name' | 'price' | 'priceDesc' | 'color'
 

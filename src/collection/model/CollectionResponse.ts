@@ -1,4 +1,4 @@
-import { Card } from '../../setDetail/model/SetResponse';
+import { Card } from '../../common/model/SetResponse';
 
 export interface CollectionResponse {
   cards: Card[],

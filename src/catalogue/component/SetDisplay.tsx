@@ -3,7 +3,7 @@ import { AspectRatio, Card, CardContent, CardOverflow, Typography } from '@mui/j
 import { UPDATE_TITLE } from '../../store/app/action.const'
 import { AppDispatch } from '../../store/store'
 import { useAppDispatch } from '../../store/hooks'
-import { Set } from '../model/SetsResponse'
+import { Set } from '../../common/model/SetsResponse'
 
 interface SetDisplayProps {
   set: Set
