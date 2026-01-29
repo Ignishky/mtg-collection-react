@@ -49,7 +49,7 @@ export const useSortedCards = (cards: Card[] | undefined) => {
           const cb = normalizeColor(b.colors)
           if (ca !== cb) return ca - cb
           // same color: sort by name only
-          return a.name.localeCompare(b.name)
+          return getCollectionNumber(a) - getCollectionNumber(b)
         }
         default:
           return 0
