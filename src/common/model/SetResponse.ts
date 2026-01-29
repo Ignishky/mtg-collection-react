@@ -1,11 +1,13 @@
 export interface SetResponse {
   name: string,
+  setCode: string,
   cards: Card[],
   price: number
 }
 
 export interface Card {
   id: string,
+  setCode: string,
   collectionNumber: string,
   name: string,
   image: string,

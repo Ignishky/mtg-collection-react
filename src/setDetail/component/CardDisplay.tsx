@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card as TcgCard, CardContent, CardCover, CardOverflow, Chip, IconButton } from '@mui/joy'
 import { Card } from '../../common/model/SetResponse'
+import { useAddToCollectionMutation, useRemoveFromCollectionMutation } from '../../common/port/backend';
 
 export function displayCardPrices(card: Card) {
   let nbNonFoil = card.nbOwnedNonFoil > 0 ? `(${card.nbOwnedNonFoil})` : ``
@@ -12,21 +13,23 @@ export function displayCardPrices(card: Card) {
 
 interface Props {
   card: Card,
-  addToCollection: Function,
-  removeFromCollection: Function,
 }
 
-const CardDisplay = ({ card, addToCollection, removeFromCollection }: Props) => {
+const CardDisplay = ({ card }: Props) => {
+
+  const [addToCollection] = useAddToCollectionMutation()
+  const [removeFromCollection] = useRemoveFromCollectionMutation()
 
   function addCollectionButton(ownedFoil: boolean) {
-    return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }} onClick={addToCollection(card, ownedFoil)}>
+    return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }}
+                       onClick={() => addToCollection({ card, ownedFoil })}>
       + {ownedFoil ? '🌟' : ''}
     </IconButton>;
   }
 
   function removeCollectionButton(ownedFoil: boolean) {
     return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }}
-                       onClick={removeFromCollection(card, ownedFoil)}>
+                       onClick={() => removeFromCollection({ card, ownedFoil })}>
       - {ownedFoil ? '🌟' : ''}
     </IconButton>;
   }

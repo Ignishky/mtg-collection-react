@@ -1,65 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Grid, LinearProgress, Typography } from '@mui/joy'
-import { AppDispatch } from '../../store/store'
 import { UPDATE_TITLE } from '../../store/app/action.const'
 import { useAppDispatch } from '../../store/hooks'
-import { Card } from '../../common/model/SetResponse'
-import backend from '../port/CollectionBackend'
 import CardDisplay from '../../setDetail/component/CardDisplay'
-import collectionBackend from '../../setDetail/port/CollectionBackend'
 import { useSortedCards } from '../../common/hook/useSortedCards'
 import SortSelector from '../../common/component/SortSelector'
+import { useGetCollectionQuery } from '../../common/port/backend';
 
 const Collection = () => {
 
-  const dispatch: AppDispatch = useAppDispatch()
-  const [cards, setCards] = useState<Card[]>()
-  const [loading, setLoading] = useState(false)
-  const { sortedCards, sortBy, setSortBy } = useSortedCards(cards)
+  const dispatch = useAppDispatch()
+  const { data, isLoading } = useGetCollectionQuery(undefined)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true)
-        const response = await backend.getCards()
-        setCards(response.cards)
-        dispatch({
-          type: UPDATE_TITLE,
-          data: { title: 'Collection', numberOfCards: response.size, price: response.value },
-        })
-      } catch (e: any) {
-        if (e.name !== 'CanceledError' && e.name !== 'AbortError') {
-          console.error('Failed to load set', e)
-        }
-      } finally {
-        setLoading(false)
-      }
-    }
+  dispatch({
+    type: UPDATE_TITLE,
+    data: { title: 'Collection', numberOfCards: data?.size, price: data?.value },
+  })
 
-    fetchData();
-  }, [dispatch])
-
-  function removeCardFromCollection(card: Card, ownedFoil: boolean) {
-    return async () => {
-      await collectionBackend.removeCard(card.id, ownedFoil)
-      const response = await backend.getCards()
-      setCards(response.cards)
-    }
-  }
+  const { sortedCards, sortBy, setSortBy } = useSortedCards(data?.cards)
 
   return (
     <>
       {
-        loading && (<LinearProgress />)
+        isLoading && (<LinearProgress />)
       }
       {
-        cards && (
+        sortedCards && (
           <Grid container margin={1} columns={9}>
             <Grid xs={9} sx={{ mb: 1, display: 'flex', justifyContent: 'flex-end' }}>
               <SortSelector sortBy={sortBy || 'priceDesc'} setSortBy={setSortBy} />
             </Grid>
             {
-              cards.length === 0 && (
+              sortedCards.length === 0 && (
                 <Typography>No card in your collection</Typography>
               )
             }
@@ -67,8 +39,7 @@ const Collection = () => {
               sortedCards.map(card => {
                 return (
                   <Grid key={card.id} xs={1}>
-                    <CardDisplay card={card} addToCollection={() => {
-                    }} removeFromCollection={removeCardFromCollection} />
+                    <CardDisplay card={card} />
                   </Grid>
                 )
               })
