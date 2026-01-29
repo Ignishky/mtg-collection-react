@@ -21,14 +21,14 @@ const CardDisplay = ({ card }: Props) => {
   const [removeFromCollection] = useRemoveFromCollectionMutation()
 
   function addCollectionButton(ownedFoil: boolean) {
-    return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }}
+    return <IconButton size="sm" variant="soft" color="success" sx={{ alignSelf: 'end' }}
                        onClick={() => addToCollection({ card, ownedFoil })}>
       + {ownedFoil ? '🌟' : ''}
     </IconButton>;
   }
 
   function removeCollectionButton(ownedFoil: boolean) {
-    return <IconButton size="sm" variant="soft" sx={{ alignSelf: 'end' }}
+    return <IconButton size="sm" variant="soft" color="danger" sx={{ alignSelf: 'end' }}
                        onClick={() => removeFromCollection({ card, ownedFoil })}>
       - {ownedFoil ? '🌟' : ''}
     </IconButton>;
